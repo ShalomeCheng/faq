@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ctrip</groupId>
+		<artifactId>super-pom</artifactId>
+		<version>1.0.8-Java21</version>
+	</parent>
+	<groupId>com.ctrip.flight</groupId>
+	<artifactId>faq</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>faq</name>
+	<description>123456789</description>
+	<properties>
+		<framework-bom.version>8.33.1-Java21</framework-bom.version>
+		<java.version>21</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<releases.repo>http://maven.release.ctripcorp.com/nexus/content/repositories/flightrelease</releases.repo>
+		<snapshots.repo>http://maven.release.ctripcorp.com/nexus/content/repositories/flightsnapshot</snapshots.repo>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.framework</groupId>
+			<artifactId>fx-spring-boot-starter-credis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.framework</groupId>
+			<artifactId>fx-spring-boot-starter-dal</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.framework</groupId>
+			<artifactId>fx-spring-boot-starter-monitor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.framework</groupId>
+			<artifactId>fx-spring-boot-starter-qconfig</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.framework</groupId>
+			<artifactId>fx-spring-boot-starter-qmq</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.framework</groupId>
+			<artifactId>fx-spring-boot-starter-soa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.framework.demo</groupId>
+			<artifactId>hello-soa-common</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.platform</groupId>
+			<artifactId>ctrip-datasource</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.tomcat</groupId>
+					<artifactId>tomcat-juli</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mock-server</groupId>
+			<artifactId>mockserver-netty</artifactId>
+			<version>5.11.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ctrip.basebiz.bi.aithinktank.idl</groupId>
+			<artifactId>aichatservice</artifactId>
+			<version>0.0.31</version>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.ctrip.framework</groupId>
+				<artifactId>framework-bom</artifactId>
+				<version>${framework-bom.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<jvmArguments>
+						-Djdk.attach.allowAttachSelf=true
+						-XX:+EnableDynamicAgentLoading
+						--add-opens java.management/sun.management=ALL-UNNAMED
+						--add-opens java.base/java.lang=ALL-UNNAMED
+						--add-opens java.base/java.lang.reflect=ALL-UNNAMED
+						--add-opens java.base/sun.reflect.annotation=ALL-UNNAMED
+						--add-opens java.base/java.math=ALL-UNNAMED
+						--add-opens java.base/java.util=ALL-UNNAMED
+						--add-opens java.base/sun.util.calendar=ALL-UNNAMED
+						--add-opens java.base/java.io=ALL-UNNAMED
+						--add-opens java.base/java.net=ALL-UNNAMED
+						--add-opens java.xml/com.sun.org.apache.xerces.internal.jaxp.datatype=ALL-UNNAMED
+					</jvmArguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>
+						@{argLine}
+						-Djdk.attach.allowAttachSelf=true
+						-XX:+EnableDynamicAgentLoading
+						--add-opens java.management/sun.management=ALL-UNNAMED
+						--add-opens java.base/java.lang=ALL-UNNAMED
+						--add-opens java.base/java.lang.reflect=ALL-UNNAMED
+						--add-opens java.base/sun.reflect.annotation=ALL-UNNAMED
+						--add-opens java.base/java.math=ALL-UNNAMED
+						--add-opens java.base/java.util=ALL-UNNAMED
+						--add-opens java.base/sun.util.calendar=ALL-UNNAMED
+						--add-opens java.base/java.io=ALL-UNNAMED
+						--add-opens java.base/java.net=ALL-UNNAMED
+						--add-opens java.xml/com.sun.org.apache.xerces.internal.jaxp.datatype=ALL-UNNAMED
+					</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

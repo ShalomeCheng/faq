@@ -1,0 +1,17 @@
+{
+  "title": "Demo for LOCAL",
+  "data": [
+    {
+      "field.int": 1,
+      "field.text": "one"
+    },
+    {
+      "field.int": 2,
+      "field.text": "two"
+    },
+    {
+      "field.int": 3,
+      "field.text": "three"
+    }
+  ]
+}

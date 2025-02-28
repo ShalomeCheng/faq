@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%date %level [%thread] %10logger [%file:%line] %msg%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="TripLog" class="com.ctrip.framework.triplog.shaded.client.appender.TripLogbackAppender">
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="TripLog"/>
+  </root>
+</configuration>
