@@ -1,4 +1,4 @@
-package com.ctrip.flight.faq.qconfig.entity;
+package com.ctrip.flight.faq.qconfig;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
